@@ -1,13 +1,13 @@
 'use strict'
 
 const store = require('../store')
-store.currentPlayer = 'X'
 
+let turn = true
 
 const newGameSuccess = (response) => {
   store.game = response.game
   // console.log(response)
-  $('#message').text('New Game! Players turn: ' + store.currentPlayer)
+  $('#message').text('New Game! Players turn: X')
   $('#sign-up-user-form').hide()
   $('#sign-in-user-form').hide()
   $('#start-new-game-button').hide()
@@ -40,8 +40,10 @@ const countGameFailure = (response) => {
 
 const onBoxClickSuccess = (response) => {
   store.game = response.game
-  $('#message').text(`Players Turn: ${store.currentPlayer}`)
-  console.log(store.currentPlayer)
+  turn = !turn
+  const currentPlayer = turn ? 'X' : 'O'
+  $('#message').text(`Players Turn: ${currentPlayer}`)
+  console.log(currentPlayer)
 }
 
 const onBoxClickFailure = () => {

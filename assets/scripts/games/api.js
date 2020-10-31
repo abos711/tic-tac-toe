@@ -23,7 +23,7 @@ const countGame = function () {
     }
   })
 }
-const updateGame = function (boxIndex, value, over) {
+const updateGame = function (boxIndex, currentPlayer, over) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
@@ -34,7 +34,7 @@ const updateGame = function (boxIndex, value, over) {
       game: {
         cell: {
           index: boxIndex,
-          value: value
+          value: currentPlayer
         },
         over: over
       }

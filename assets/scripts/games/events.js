@@ -4,7 +4,7 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('./../store')
 
-let turn = true
+let currentPlayer = 'X'
 let gameState = {
   moves: 0,
   over: false,
@@ -14,13 +14,13 @@ let gameState = {
 // passthrough values for when a new game is started to clear/reset the board
 const onNewGame = (event) => {
   event.preventDefault()
-  store.currentPlayer = 'X'
+  currentPlayer = 'X'
   gameState = {
     moves: 0,
     over: false,
     winningPlayer: ''
   }
-  console.log(store.currentPlayer)
+  console.log(currentPlayer)
   console.log(gameState)
 
   const button = event.click
@@ -65,7 +65,7 @@ const checkWinner = (array) => {
     return gameState
   } else {
     // Need to change gameState.winningPlayer to value of tie to differentiate true in lines 75-79
-    if (array[0] !== '' && gameState.moves === 8) {
+    if (array[0] !== '' && gameState.moves === 9) {
       gameState.winningPlayer = 'Tie'
       gameState.over = true
       return gameState
@@ -80,13 +80,12 @@ const onBoxClick = (event) => {
   box.css('pointer-events', 'none')
   const boxIndex = box.data('box-index')
 
-  box.css('background', 'transparent').text(store.currentPlayer)
+  box.css('background', 'transparent').text(currentPlayer)
 
-  api.updateGame(boxIndex, store.currentPlayer, gameState.over)
+  api.updateGame(boxIndex, currentPlayer, gameState.over)
     .then(ui.onBoxClickSuccess)
     .then(function () {
-      turn = !turn
-      store.currentPlayer = turn ? 'X' : 'O'
+      currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
       gameState.moves++
       checkWinner(store.game.cells)
       if (gameState.winningPlayer === 'Tie') {
@@ -100,7 +99,7 @@ const onBoxClick = (event) => {
     .catch(ui.onBoxClickFailure)
 
   console.log('box index ', boxIndex)
-  console.log('store.player ', store.currentPlayer)
+  console.log('store.player ', currentPlayer)
   console.log(gameState.over)
   console.log(store.game.cells)
 }
