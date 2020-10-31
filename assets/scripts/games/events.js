@@ -11,6 +11,25 @@ let gameState = {
   winningPlayer: ''
 }
 
+// passthrough values for when a new game is started to clear/reset the board
+const onNewGame = (event) => {
+  event.preventDefault()
+  currentPlayer = 'X'
+  gameState = {
+    moves: 0,
+    over: false,
+    winningPlayer: ''
+  }
+  console.log(currentPlayer)
+  console.log(gameState)
+
+  const button = event.click
+
+  api.newGame(button)
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
+
 const checkWinner = (array) => {
   if (array[0] !== '' && array[0] === array[1] && array[1] === array[2]) {
     gameState.winningPlayer = array[0]
@@ -58,13 +77,10 @@ const onBoxClick = (event) => {
   event.preventDefault()
   const box = $(event.target)
 
-  const boxIndex = box.data('box-index')
-  console.log('box index ', boxIndex)
-
-
   box.css('pointer-events', 'none')
+  const boxIndex = box.data('box-index')
+
   box.css('background', 'transparent').text(currentPlayer)
-  console.log('players turn ', currentPlayer)
 
   api.updateGame(boxIndex, currentPlayer, gameState.over)
     .then(ui.onBoxClickSuccess)
@@ -73,31 +89,19 @@ const onBoxClick = (event) => {
       gameState.moves++
       checkWinner(store.game.cells)
       if (gameState.winningPlayer === 'Tie') {
+        $('.box').css('pointer-events', 'none')
         $('#message').text('Game ended in a draw! Play Again!!')
       } else if (gameState.over === true) {
-        $('#game').css('pointer-events', 'none')
+        $('.box').css('pointer-events', 'none')
         $('#message').text(`${gameState.winningPlayer} is the Winner!`)
       }
     })
     .catch(ui.onBoxClickFailure)
-}
-// passthrough values for when a new game is started to clear/reset the board
-const onNewGame = (event) => {
-  event.preventDefault()
-  currentPlayer = 'X'
-  gameState = {
-    moves: 0,
-    over: false,
-    winningPlayer: ''
-  }
 
-  const button = event.click
-  // console.log(button, 'working')
-  // console.log(JSON.stringify(button))
-
-  api.newGame(button)
-    .then(ui.newGameSuccess)
-    .catch(ui.newGameFailure)
+  console.log('box index ', boxIndex)
+  console.log('store.player ', currentPlayer)
+  console.log(gameState.over)
+  console.log(store.game.cells)
 }
 
 const onCountGame = (event) => {
@@ -109,7 +113,6 @@ const onCountGame = (event) => {
 }
 
 module.exports = {
-  currentPlayer: currentPlayer,
   gameState: gameState,
   onBoxClick: onBoxClick,
   onNewGame: onNewGame,
