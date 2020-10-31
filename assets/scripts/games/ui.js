@@ -1,12 +1,13 @@
 'use strict'
 
 const store = require('../store')
-// let turn = true
+store.currentPlayer = 'X'
+
 
 const newGameSuccess = (response) => {
   store.game = response.game
   // console.log(response)
-  $('#message').text('New Game! Players turn: X')
+  $('#message').text('New Game! Players turn: ' + store.currentPlayer)
   $('#sign-up-user-form').hide()
   $('#sign-in-user-form').hide()
   $('#start-new-game-button').hide()
@@ -14,10 +15,11 @@ const newGameSuccess = (response) => {
   $('#sign-out-user-form').show()
   $('#new-game-button').show()
   $('#index-game-button').show()
-  $('.box:nth-child(2n)').css('background-color', 'orange')
-  $('.box:nth-child(2n+1)').css('background-color', 'black')
   $('.box').text('')
   $('#game').show()
+  $('.box').css('pointer-events', 'auto')
+  $('.box:nth-child(2n)').css('background-color', 'orange')
+  $('.box:nth-child(2n+1)').css('background-color', 'black')
 }
 const newGameFailure = () => {
   $('#message').text('Something went wrong, try again')
@@ -38,12 +40,8 @@ const countGameFailure = (response) => {
 
 const onBoxClickSuccess = (response) => {
   store.game = response.game
-  // turn = !turn
-  // const player = turn ? 'X' : 'O'
   $('#message').text(`Players Turn: ${store.currentPlayer}`)
-  // return turn
-  // console.log(store.game)
-  // This should be good to go once I can reset the board and each new game starts with X
+  console.log(store.currentPlayer)
 }
 
 const onBoxClickFailure = () => {
