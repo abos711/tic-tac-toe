@@ -1,0 +1,155 @@
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  // import a styled font here
+  background: black;
+  color: orange;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  align-items: center;
+  text-align: center;
+  // import spooky text
+}
+
+h2 {
+  align-items: center;
+  text-align: center;
+}
+
+#sign-up-user-form {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+#sign-up-user, #sign-up-password, #sign-up-password_confirmation {
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+#sign-in-user-form {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+#sign-in-user, #sign-in-password {
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+// why isnt this working??
+#change-password-user-form {
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+#new-game-button {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+#update-game-button {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+#index-game-button {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+// Why isnt this working?
+#sign-out-user-form {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: black;
+  color: orange;
+}
+
+.container {
+  height: 100vh;
+  }
+
+.board {
+  display: flex;
+  margin: auto;
+  max-height: calc(100vh - 75px);
+  max-width: calc(100vh - 75px);
+}
+
+.box {
+  align-items: center;
+  display: flex;
+  height: calc(100%/3);
+  justify-content: center;
+  transition: .50s ease-in;
+  width: 50vmin;
+  border: 1px white;
+  background-color: black;
+  color: white;
+  font-size: 10vh;
+  border: 2px white;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  min-height: calc(100% / 3);
+  user-select: none;
+
+  &:hover {
+    background-color: highlight;
+  }
+  // Adds a shadow to the X's and O's.
+  // The shadow is placed 2px to the right and 2px below the text, respectively.
+  // Set the shadow's color to black (rgb: 0, 0, 0) and to be
+  // 25% transparent (opacity)
+  text-shadow: 0px 0px rgba(0 , 0, 0, .5);
+  // Select the 3 right boxes, `nth-child` selects elements based on their
+  // position to their siblings.
+  // giving `nth-child` the value `3n` selects every third box (boxes 3, 6, and 9)
+  // Note: This is a sass nested selector, `&` refers to the current selector `.box`
+  &:nth-child(3n) {
+    border-right: 0;
+  }
+  &:nth-child(2n) {
+  background-color: black;
+}
+  &:nth-child(2n+1) {
+  background-color: orange;
+}
+  // Select the 3 bottom boxes, `nth-last-child` selects elements based on their
+  // position, **counting from the end**.
+  // "-1n + 3" represents the last three elements among a group of siblings.
+
+  // Why? Lets see what `-1n + 3` evaluates to with different values of n
+  // when n is 0: (-1 * 0) + 3 = 3rd // selects the third to last .box
+  // when n is 1: (-1 * 1) + 3 = 2nd // selects the second to last .box
+  // when n is 2: (-1 * 2) + 3 = 1st // selects the last .box
+  &:nth-last-child(-1n + 3) {
+    // Remove their bottom border, since we only want lines in between boxes
+    // for our grid
+    border-bottom: 0;
+  }
+
+  // When you hover over a box
+
+}
