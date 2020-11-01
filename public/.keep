@@ -1,0 +1,10 @@
+
+
+@font-face {
+  font-family: 'Nature Beauty';
+  src: url('public/Nature-Beauty.ttf') format('truetype');
+}
+
+.element-with-custom-font {
+  font-family: 'Nature Beauty';
+}
