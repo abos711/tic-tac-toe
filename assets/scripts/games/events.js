@@ -20,8 +20,8 @@ const onNewGame = (event) => {
     over: false,
     winningPlayer: ''
   }
-  console.log(currentPlayer)
-  console.log(gameState)
+  // console.log(currentPlayer)
+  // console.log(gameState)
 
   const button = event.click
 
@@ -98,10 +98,10 @@ const onBoxClick = (event) => {
     })
     .catch(ui.onBoxClickFailure)
 
-  console.log('box index ', boxIndex)
-  console.log('store.player ', currentPlayer)
-  console.log(gameState.over)
-  console.log(store.game.cells)
+  // console.log('box index ', boxIndex)
+  // console.log('store.player ', currentPlayer)
+  // console.log(gameState.over)
+  // console.log(store.game.cells)
 }
 
 const onCountGame = (event) => {

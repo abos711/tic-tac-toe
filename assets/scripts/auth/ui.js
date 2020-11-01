@@ -39,7 +39,7 @@ const changePasswordFailure = () => {
   $('#message').text('Something went wrong, try again')
 }
 const signOutSuccess = () => {
-  // console.log('youre signed out')
+  // // console.log('youre signed out')
   $('#message').text('Success! Come back soon! ' + store.user.email)
   $('#sign-up-user-form').show()
   $('#sign-in-user-form').show()

@@ -62,3 +62,5 @@ Problem Solving strategy, development process, planning:
 **I relied on the issues board a lot to fix issues. A lot of people were having the same problems I was and looking at their code helped me find the solutions. Our professors were great in getting us to the right resource to solve our issues. Sometimes stepping up and guiding me in one on ones. The planning relied mainly on the get started and requirement schedule. Before tackling a project in the real world, its good to grab the customer/clients requirement list and really focus on the functionality of the site. Making it look nice only goes so far if it doesnt work.**
 
 Current unsolved problems:
+
+**Requirements are all working. Next unsolved problems are within styling. I want to change the type=submit in forms to reflect color scheme. I hope to style my css interactively off of holidays. Store several color/holiday css schemes and based off the time of the year the tic-tac-toe site changes to the appropriate holiday. Audio and images to follow.**

@@ -6,7 +6,7 @@ let turn = true
 
 const newGameSuccess = (response) => {
   store.game = response.game
-  // console.log(response)
+  // // console.log(response)
   $('#message').text('New Game! Players turn: X')
   $('#sign-up-user-form').hide()
   $('#sign-in-user-form').hide()
@@ -27,14 +27,14 @@ const newGameFailure = () => {
 
 const countGameSuccess = (response) => {
   store.games = response.games
-  console.log(response)
+  // console.log(response)
 
   const gamesPlayed = store.games.length
   $('#message').text('Games Played ' + gamesPlayed)
   // placeholder - need to run a function inside event
 }
 const countGameFailure = (response) => {
-  console.log(response)
+  // console.log(response)
   $('#message').text('Something went wrong, try again')
 }
 
@@ -43,7 +43,7 @@ const onBoxClickSuccess = (response) => {
   turn = !turn
   const currentPlayer = turn ? 'X' : 'O'
   $('#message').text(`Players Turn: ${currentPlayer}`)
-  console.log(currentPlayer)
+  // console.log(currentPlayer)
 }
 
 const onBoxClickFailure = () => {

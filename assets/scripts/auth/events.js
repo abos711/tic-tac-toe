@@ -8,7 +8,7 @@ const onSignUp = (event) => {
   const form = event.target
 
   const data = getFormFields(form)
-  // console.log(JSON.stringify(data))
+  // // console.log(JSON.stringify(data))
 
   api.signUp(data)
     .then(ui.signUpSuccess)
@@ -20,7 +20,7 @@ const onSignIn = (event) => {
   const form = event.target
 
   const data = getFormFields(form)
-  // console.log(JSON.stringify(data))
+  // // console.log(JSON.stringify(data))
 
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -32,7 +32,7 @@ const onChangePassword = (event) => {
   const form = event.target
 
   const data = getFormFields(form)
-  console.log(data, 'data in change password')
+  // console.log(data, 'data in change password')
 
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
@@ -40,7 +40,7 @@ const onChangePassword = (event) => {
 }
 const onSignOut = (event) => {
   event.preventDefault()
-  // console.log('im going to sign you out')
+  // // console.log('im going to sign you out')
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
